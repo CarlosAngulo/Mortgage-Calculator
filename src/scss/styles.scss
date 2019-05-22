@@ -40,6 +40,15 @@ label {
 input[type=text], input[type=number] {
     padding: 0 15px;
     font-size: 14px;
+    &.currency {
+        padding-left: 30px;
+        position: relative;
+        &:before {
+            content: '$';
+            position: absolute;
+            left: 20px;
+        }
+    }
 }
 
 .calculator {
@@ -91,10 +100,37 @@ input[type=text], input[type=number] {
     z-index: 1;
 }
 
-.inputDiv {
-    width: 250px;
-    margin: 100px auto;
-    position: relative;
+section.loan, section.annual {
+    margin: 20px 0;
+    label {
+        margin-bottom: 5px;
+    }
+}
+
+section.annual {
+    display: flex;
+    .annual__tax {
+        flex-grow: 1;
+        margin-right: 10px;
+        &:last-child {
+            margin: 0 0 0 10px;
+        }
+    }
+}
+
+button.btn {
+    display: block;
+    color: white;
+    background-color: $btnBgColor;
+    text-align: center;
+    line-height: 40px;
+    border: medium none;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'HelveticaNeue-Bold';
+    font-size: 14px;
+    cursor: pointer;
 }
   
 input[type=range] {

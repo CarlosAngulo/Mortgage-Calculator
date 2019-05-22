@@ -113,6 +113,15 @@ input[type=text], input[type=number] {
   padding: 0 15px;
   font-size: 14px;
 }
+input[type=text].currency, input[type=number].currency {
+  padding-left: 30px;
+  position: relative;
+}
+input[type=text].currency:before, input[type=number].currency:before {
+  content: "$";
+  position: absolute;
+  left: 20px;
+}
 
 .calculator {
   margin: 10px;
@@ -163,10 +172,37 @@ input[type=text], input[type=number] {
   z-index: 1;
 }
 
-.inputDiv {
-  width: 250px;
-  margin: 100px auto;
-  position: relative;
+section.loan, section.annual {
+  margin: 20px 0;
+}
+section.loan label, section.annual label {
+  margin-bottom: 5px;
+}
+
+section.annual {
+  display: flex;
+}
+section.annual .annual__tax {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+section.annual .annual__tax:last-child {
+  margin: 0 0 0 10px;
+}
+
+button.btn {
+  display: block;
+  color: white;
+  background-color: #0077c0;
+  text-align: center;
+  line-height: 40px;
+  border: medium none;
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-family: "HelveticaNeue-Bold";
+  font-size: 14px;
+  cursor: pointer;
 }
 
 input[type=range] {

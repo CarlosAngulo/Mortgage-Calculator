@@ -49,9 +49,9 @@ const mortageCalculator = (function(){
         if ( val > rangeConfig[i].max) {
             val = rangeConfig[i].max;
         }
-        
+
         _R[i].value = _I[i].value = rangeConfig[i].value = val;
-        let leftShadow = 100*val/(rangeConfig[i].max - rangeConfig[i].min);
+        let leftShadow = 100 * val / ( rangeConfig[i].max - rangeConfig[i].min );
 
         _B[i].style.background =`linear-gradient(to right, #1091cc ${leftShadow}%, #CACACA ${leftShadow}%)`;
     }
