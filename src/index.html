@@ -9,8 +9,11 @@
 </head>
 <body>
     
+    
+    <h1>Mortgage Calculator</h1>
+    
     <div class="container">
-        <h1>Mortgage Calculator</h1>
+
         <div class="calculator">
             <h3>Change values to calculate your results</h3>
             
@@ -25,7 +28,7 @@
                         </div>
                         <span class="controls__range__label--max">40</span>
                     </div>
-                    <input type="number" value="3" min="1" max="40" class="controls__input">
+                    <input type="number" value="3" min="1" max="40" class="controls__input" disabled >
                 </div>
             </section>
 
@@ -40,28 +43,59 @@
                         </div>
                         <span class="controls__range__label--max">10</span>
                     </div>
-                    <input type="number" value="3" min="1" max="40" class="controls__input">
+                    <input type="number" value="3" min="1" max="40" class="controls__input" disabled >
                 </div>
             </section>
 
             <section class="loan">
                 <label for="">Loan Amount</label>
-                <input type="number" class="currency">
+                <span class="currencysign">
+                    <input type="number" class="currency insert">
+                    <span class="errormessage"></span>
+                </span>
             </section>
 
             <section class="annual">
                 <div class="annual__tax">
                     <label for="">Annual Tax</label>
-                    <input type="number" class="currency">
+                    <span class="currencysign">
+                        <input type="number" class="currency insert">
+                        <span class="errormessage"></span>
+                    </span>
                 </div>
                 <div class="annual__tax">
                     <label for="">Annual Insurance</label>
-                    <input type="number" class="currency">
+                    <span class="currencysign">
+                        <input type="number" class="currency insert">
+                        <span class="errormessage"></span>
+                    </span>
                 </div>
             </section>
 
-            <button class="btn calculate">Calculate</button>
+            <button class="btn calculate" onClick="mgCalc.calculate()">Calculate</button>
+
         </div>
+
+        <div class="results">
+            <h2>Your results</h2>
+            <dl>
+                <dt>Principle & Interest</dt>
+                <dd>$ 733.27</dd>
+            </dl>
+            <dl>
+                <dt>Tax</dt>
+                <dd>$ 733.27</dd>
+            </dl>
+            <dl>
+                <dt>Insurance</dt>
+                <dd>$ 733.27</dd>
+            </dl>
+            <dl class="total">
+                <dt>Total Monthly Payment</dt>
+                <dd>$ 841.60</dd>
+            </dl>
+        </div>
+        
     </div>
 
     <script src="es6/mortgage-calculator.js"></script>

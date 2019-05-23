@@ -1,10 +1,23 @@
+
+// Text colors
 $h1TitleColor: #006ea0;
 $h3TitleColor: #3e3d3f;
 $btnBgColor: #0077c0;
 $bodyColor: #3e3d3f;
-$titleUnderline: 1px solid #CACACA;
+$errorColor: #da3535;
 
+// Background colors
+$resultsBackground: #eaf6fa;
 $rangeBackgroundLeft: #1091cc;
 $rangeBackgroundRight: #d8d8d8;
 
+// Underlines
+$resultsSeparator: 1px solid #B2B2B2;
+$titleUnderline: 1px solid #CACACA;
+
 $controlsLabelWidth: 30px;
+$inputLineHeightMobile: 40px;
+$inputLineHeightDesktop: 44px;
+
+// Breakpoints
+$breakpointsm: 768px;

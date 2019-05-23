@@ -8,16 +8,21 @@ html, body {
 
 h1 {
   font-size: 20px;
-  margin: 0.67em 0;
+  margin: 0.8em 0;
   padding: 0;
   line-height: 1.5;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 0.7em 0;
 }
 
 h3 {
   font-size: 12px;
   margin: 0.5em 0;
   padding: 0;
-  line-height: 1.5;
+  line-height: 1.6em;
 }
 
 * {
@@ -48,10 +53,15 @@ select {
 input[type=text], input[type=number] {
   border-radius: 4px;
   border: 1px solid #a6a6a6;
-  line-height: 40px;
   display: block;
   padding: 0 10px;
   width: 100%;
+  line-height: 40px;
+}
+@media (min-width: 768px) {
+  input[type=text], input[type=number] {
+    line-height: 44px;
+  }
 }
 input[type=text]:focus, input[type=number]:focus {
   border: 1px solid #3e3d3f;
@@ -79,18 +89,45 @@ input[type=text]::-webkit-inner-spin-button, input[type=text]::-webkit-outer-spi
   font-family: "SFUIDisplay-Regular";
   src: url("../fonts/SFUIDisplay-Regular.eot?") format("eot"), url("../fonts/SFUIDisplay-Regular.woff") format("woff"), url("../fonts/SFUIDisplay-Regular.woff2") format("woff2"), url("../fonts/SFUIDisplay-Regular.ttf") format("truetype"), url("../fonts/SFUIDisplay-Regular.svg#SFUIDisplay-Regular") format("svg");
 }
+@font-face {
+  font-family: "SFUIDisplay-Bold";
+  src: url("../fonts/SFUIDisplay-Bold.eot?") format("eot"), url("../fonts/SFUIDisplay-Bold.woff") format("woff"), url("../fonts/SFUIDisplay-Bold.woff2") format("woff2"), url("../fonts/SFUIDisplay-Bold.ttf") format("truetype"), url("../fonts/SFUIDisplay-Bold.svg#SFUIDisplay-Bold") format("svg");
+}
 html {
   font-family: "HelveticaNeue";
   color: #3e3d3f;
 }
 
+@media (min-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
 h1 {
   font-family: "HelveticaNeue-Light";
   font-weight: normal;
-  line-height: 1.8em;
+  line-height: 2.1em;
   color: #006ea0;
   border-bottom: 1px solid #CACACA;
   margin: 20px 0 20px 20px;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 22px;
+    line-height: 2.5em;
+    margin: 10px 30px 24px;
+  }
+}
+
+h2 {
+  font-weight: normal;
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 22px;
+    margin: 0.5em 0 1em;
+  }
 }
 
 h3 {
@@ -98,50 +135,97 @@ h3 {
   color: #3e3d3f;
   border-bottom: 1px solid #CACACA;
   font-weight: normal;
-  line-height: 1;
   padding-bottom: 8px;
   margin: 0 0 15px;
+}
+@media (min-width: 768px) {
+  h3 {
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
 }
 
 label {
   font-family: "HelveticaNeue-Bold";
   display: block;
-  line-height: 1.7;
+  line-height: 1.5em;
+}
+@media (min-width: 768px) {
+  label {
+    line-height: 1em;
+  }
 }
 
 input[type=text], input[type=number] {
   padding: 0 15px;
   font-size: 14px;
 }
-input[type=text].currency, input[type=number].currency {
-  padding-left: 30px;
-  position: relative;
+@media (min-width: 768px) {
+  input[type=text], input[type=number] {
+    font-size: 16px;
+  }
 }
-input[type=text].currency:before, input[type=number].currency:before {
-  content: "$";
-  position: absolute;
-  left: 20px;
+input[type=text].error, input[type=number].error {
+  border-color: #da3535;
+}
+input[type=text].error + .errormessage, input[type=number].error + .errormessage {
+  display: block;
+}
+
+.container {
+  padding: 0 10px;
+}
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    max-width: 750px;
+    margin: auto;
+    padding: 0;
+    align-items: center;
+  }
 }
 
 .calculator {
-  margin: 10px;
+  margin: 0;
   border-radius: 4px;
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
   padding: 15px 20px 20px;
+  position: relative;
+  z-index: 30;
+  background-color: white;
+}
+@media (min-width: 768px) {
+  .calculator {
+    flex-basis: 470px;
+    padding: 35px 40px 40px;
+  }
 }
 
 .rate {
-  margin-bottom: 13px;
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .rate {
+    margin-bottom: 18px;
+  }
 }
 
 .controls {
   display: flex;
   font-size: 14px;
 }
+@media (min-width: 768px) {
+  .controls {
+    font-size: 16px;
+  }
+}
 .controls .controls__input {
   width: 50px;
   text-align: center;
   margin-left: 14px;
+}
+.controls .controls__input[disabled] {
+  background-color: white;
 }
 
 .controls__range {
@@ -149,8 +233,13 @@ input[type=text].currency:before, input[type=number].currency:before {
   display: flex;
 }
 .controls__range span[class*=controls__range__label] {
-  line-height: 40px;
   width: 30px;
+  line-height: 40px;
+}
+@media (min-width: 768px) {
+  .controls__range span[class*=controls__range__label] {
+    line-height: 44px;
+  }
 }
 .controls__range span[class*=controls__range__label].controls__range__label--max {
   text-align: right;
@@ -159,6 +248,12 @@ input[type=text].currency:before, input[type=number].currency:before {
 .controls__range__container {
   width: 100%;
   position: relative;
+  margin: 7px 0;
+}
+@media (min-width: 768px) {
+  .controls__range__container {
+    margin: 10px 0;
+  }
 }
 
 .controls__range__background {
@@ -167,13 +262,18 @@ input[type=text].currency:before, input[type=number].currency:before {
   height: 8px;
   right: 0;
   left: 0;
-  top: 15px;
+  top: 9px;
   border-radius: 4px;
   z-index: 1;
 }
 
 section.loan, section.annual {
-  margin: 20px 0;
+  margin: 16px 0 10px;
+}
+@media (min-width: 768px) {
+  section.loan, section.annual {
+    margin: 16px 0 22px;
+  }
 }
 section.loan label, section.annual label {
   margin-bottom: 5px;
@@ -190,6 +290,32 @@ section.annual .annual__tax:last-child {
   margin: 0 0 0 10px;
 }
 
+.currencysign {
+  position: relative;
+}
+.currencysign:before {
+  content: "$";
+  position: absolute;
+  left: 16px;
+  z-index: 20;
+  line-height: 43px;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .currencysign:before {
+    font-size: 18px;
+    line-height: 47px;
+  }
+}
+.currencysign input[type=text], .currencysign input[type=number] {
+  padding-left: 26px;
+}
+@media (min-width: 768px) {
+  .currencysign input[type=text], .currencysign input[type=number] {
+    padding-left: 30px;
+  }
+}
+
 button.btn {
   display: block;
   color: white;
@@ -201,15 +327,20 @@ button.btn {
   text-transform: uppercase;
   border-radius: 4px;
   font-family: "HelveticaNeue-Bold";
-  font-size: 14px;
   cursor: pointer;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  button.btn {
+    font-size: 16px;
+  }
 }
 
 input[type=range] {
   position: relative;
   height: 26px;
   -webkit-appearance: none;
-  margin: 7px 0;
+  margin: 0;
   width: 100%;
   z-index: 2;
   background-color: transparent;
@@ -296,6 +427,88 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: transparent;
+}
+
+.errormessage {
+  color: #da3535;
+  font-family: "HelveticaNeue-Bold";
+  font-size: 10px;
+  display: none;
+}
+@media (min-width: 768px) {
+  .errormessage {
+    font-size: 12px;
+  }
+}
+
+.results {
+  background-color: #eaf6fa;
+  margin-top: -10px;
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .results {
+    margin-top: 0;
+    flex-grow: 1;
+    padding: 30px 40px 22px;
+  }
+}
+.results dl {
+  justify-content: space-between;
+  border-bottom: 1px solid #B2B2B2;
+  line-height: 16px;
+  padding: 15px 0;
+  margin: 0;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .results dl {
+    display: block;
+    border-bottom: medium none;
+    line-height: 1.7em;
+  }
+}
+.results dl.total {
+  padding: 20px 0 5px;
+  border-bottom: medium none;
+}
+@media (min-width: 768px) {
+  .results dl.total {
+    border-top: 1px solid #B2B2B2;
+    padding-top: 25px;
+    margin-top: 10px;
+  }
+  .results dl.total dt {
+    font-size: 18px;
+  }
+}
+.results dl.total dd {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .results dl.total dd {
+    font-size: 22px;
+    line-height: 1.8em;
+  }
+}
+.results dt {
+  font-family: "SFUIDisplay-Regular";
+  font-size: 12px;
+}
+@media (min-width: 768px) {
+  .results dt {
+    font-size: 14px;
+  }
+}
+.results dd {
+  font-family: "SFUIDisplay-Bold";
+  margin: 0;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .results dd {
+    font-size: 18px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

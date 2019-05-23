@@ -6,19 +6,39 @@
 @include font-face('HelveticaNeue-Light', '../fonts/HelveticaNeue-Light');
 @include font-face('HelveticaNeue-Bold', '../fonts/HelveticaNeue-Bold');
 @include font-face('SFUIDisplay-Regular', '../fonts/SFUIDisplay-Regular');
+@include font-face('SFUIDisplay-Bold', '../fonts/SFUIDisplay-Bold');
 
 html {
     font-family: 'HelveticaNeue';
     color: $bodyColor;
 }
 
+body {
+    @media (min-width: $breakpointsm) {
+        font-size: 14px;
+    }
+}
+
 h1 {
     font-family: 'HelveticaNeue-Light';
     font-weight: normal;
-    line-height: 1.8em;
+    line-height: 2.1em;
     color: $h1TitleColor;
     border-bottom: $titleUnderline;
-    margin: 20px 0 20px 20px; 
+    margin: 20px 0 20px 20px;
+    @media (min-width: $breakpointsm) {
+        font-size: 22px;
+        line-height: 2.5em;
+        margin: 10px 30px 24px;
+    }
+}
+
+h2 {
+    font-weight: normal;
+    @media (min-width: $breakpointsm) {
+        font-size: 22px;
+        margin: 0.5em 0 1em;
+    }
 }
 
 h3 {
@@ -26,49 +46,82 @@ h3 {
     color: $h3TitleColor;
     border-bottom: $titleUnderline;
     font-weight: normal;
-    line-height: 1;
     padding-bottom: 8px;
     margin: 0 0 15px;
+    @media (min-width: $breakpointsm) {
+        font-size: 16px;
+        margin-bottom: 35px;
+    }
 }
 
 label {
     font-family: 'HelveticaNeue-Bold';
     display: block;
-    line-height: 1.7;
+    line-height: 1.5em;
+    @media (min-width: $breakpointsm) {
+        line-height: 1em;
+    }
 }
 
 input[type=text], input[type=number] {
     padding: 0 15px;
     font-size: 14px;
-    &.currency {
-        padding-left: 30px;
-        position: relative;
-        &:before {
-            content: '$';
-            position: absolute;
-            left: 20px;
+    @media (min-width: $breakpointsm) {
+        font-size: 16px;
+    }
+    &.error {
+        border-color: $errorColor;
+        & + .errormessage {
+            display: block;
         }
     }
 }
 
+.container {
+    padding: 0 10px;
+    @media (min-width: $breakpointsm) {
+        display: flex;
+        max-width: 750px;
+        margin: auto;
+        padding: 0;
+        align-items: center;
+    }
+}
+
 .calculator {
-    margin: 10px;
+    margin: 0;
     border-radius: 4px;
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
     padding: 15px 20px 20px;
+    position: relative;
+    z-index: 30;
+    background-color: white;
+    @media (min-width: $breakpointsm) {
+        flex-basis: 470px;
+        padding: 35px 40px 40px;
+    }
 }
 
 .rate {
-    margin-bottom: 13px;
+    margin-bottom: 10px;
+    @media (min-width: $breakpointsm) {
+        margin-bottom: 18px;
+    }
 }
 
 .controls {
     display: flex;
     font-size: 14px;
+    @media (min-width: $breakpointsm) {
+        font-size: 16px;
+    }
     .controls__input {
         width: 50px;
         text-align: center;
         margin-left: 14px;
+        &[disabled] {
+            background-color: white;
+        }
     }
 }
 
@@ -76,8 +129,11 @@ input[type=text], input[type=number] {
     flex-grow: 1;
     display: flex;
     span[class*=controls__range__label] {
-        line-height: 40px;
         width: $controlsLabelWidth;
+        line-height: $inputLineHeightMobile;
+        @media (min-width: $breakpointsm) {
+            line-height: $inputLineHeightDesktop;
+        }
         &.controls__range__label--max {
             text-align: right;
         }
@@ -87,6 +143,10 @@ input[type=text], input[type=number] {
 .controls__range__container {
     width: 100%;
     position: relative;
+    margin: 7px 0;
+    @media (min-width: $breakpointsm) {
+        margin: 10px 0;
+    }
 }
 
 .controls__range__background {
@@ -95,13 +155,16 @@ input[type=text], input[type=number] {
     height: 8px;
     right: 0;
     left: 0;
-    top: 15px;
+    top: 9px;
     border-radius: 4px;
     z-index: 1;
 }
 
 section.loan, section.annual {
-    margin: 20px 0;
+    margin: 16px 0 10px;
+    @media (min-width: $breakpointsm) {
+        margin: 16px 0 22px;
+    }
     label {
         margin-bottom: 5px;
     }
@@ -118,6 +181,28 @@ section.annual {
     }
 }
 
+.currencysign {
+    position: relative;
+    &:before {
+        content: '$';
+        position: absolute;
+        left: 16px;
+        z-index: 20;
+        line-height: $inputLineHeightMobile + 3px;
+        @media (min-width: $breakpointsm) {
+            font-size: 18px;
+            line-height: $inputLineHeightDesktop + 3px;
+        }
+        font-size: 14px;
+    }
+    input[type=text], input[type=number] {
+        padding-left: 26px;
+        @media (min-width: $breakpointsm) {
+            padding-left: 30px;
+        }
+    }
+}
+
 button.btn {
     display: block;
     color: white;
@@ -129,15 +214,18 @@ button.btn {
     text-transform: uppercase;
     border-radius: 4px;
     font-family: 'HelveticaNeue-Bold';
-    font-size: 14px;
     cursor: pointer;
+    font-size: 14px;
+    @media (min-width: $breakpointsm) {
+        font-size: 16px;
+    }
 }
   
 input[type=range] {
     position: relative;
     height: 26px;
     -webkit-appearance: none;
-    margin: 7px 0;
+    margin: 0;
     width: 100%;
     z-index: 2;
     background-color: transparent;
@@ -223,6 +311,77 @@ input[type=range] {
     }
     &:focus::-ms-fill-upper {
         background: transparent;
+    }
+}
+
+.errormessage {
+    color: $errorColor;
+    font-family: 'HelveticaNeue-Bold';
+    font-size: 10px;
+    display: none;
+    @media (min-width: $breakpointsm) {
+        font-size: 12px;
+    }
+}
+
+ 
+// Results table
+
+.results {
+    background-color: $resultsBackground;
+    margin-top: -10px;
+    padding: 20px;
+    @media (min-width: $breakpointsm) {
+        margin-top: 0;
+        flex-grow: 1;
+        padding: 30px 40px 22px;
+    }
+    dl {
+        justify-content: space-between;
+        border-bottom: $resultsSeparator;
+        line-height: 16px;
+        padding: 15px 0;
+        margin: 0;
+        display: flex;
+        @media (min-width: $breakpointsm) {
+            display: block;
+            border-bottom: medium none;
+            line-height: 1.7em;
+        }
+        &.total {
+            padding: 20px 0 5px;
+            border-bottom: medium none;
+            @media (min-width: $breakpointsm) {
+                border-top: $resultsSeparator;
+                padding-top: 25px;
+                margin-top: 10px;
+                dt {
+                    font-size: 18px;
+                }
+            }
+            dd {
+                font-size: 18px;
+                @media (min-width: $breakpointsm) {
+                    font-size: 22px;
+                    line-height: 1.8em;
+                }
+            }
+        }
+    }
+    dt {
+        font-family: 'SFUIDisplay-Regular';
+        font-size: 12px;
+        @media (min-width: $breakpointsm) {
+            font-size: 14px;
+        }
+    }
+    dd {
+        font-family: 'SFUIDisplay-Bold';
+        margin: 0;
+        font-size: 14px;
+        @media (min-width: $breakpointsm) {
+            font-size: 18px;
+        }
     }
 }
 

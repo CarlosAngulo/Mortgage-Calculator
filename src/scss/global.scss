@@ -8,20 +8,21 @@ html, body {
 
 h1 {
     font-size: 20px;
-    margin: 0.67em 0;
+    margin: 0.8em 0;
     padding: 0;
     line-height: 1.5;
 }
 
 h2 {
-
+    font-size: 20px;
+    margin: 0.7em 0;
 }
 
 h3 {
     font-size: 12px;
     margin: 0.5em 0;
     padding: 0;
-    line-height: 1.5;
+    line-height: 1.6em;
 }
 
 * {
@@ -52,10 +53,13 @@ select {
 input[type=text], input[type=number] {
     border-radius: 4px;
     border: 1px solid#a6a6a6;
-    line-height: 40px;
     display: block;
     padding: 0 10px;
     width: 100%;
+    line-height: $inputLineHeightMobile;
+    @media (min-width: $breakpointsm) {
+        line-height: $inputLineHeightDesktop;
+    }
     &:focus {
         border: 1px solid #3e3d3f;
         outline: medium none;
