@@ -109,11 +109,12 @@ const mgCalc = (function(){
         if ( val < RANGE_CONFIG[i].min || isNaN(val) ) {
             val = RANGE_CONFIG[i].min;
         }
-        if ( val > RANGE_CONFIG[i].max) {
+        if ( val > RANGE_CONFIG[i].max ) {
             val = RANGE_CONFIG[i].max;
         }
 
         _R[i].value = _I[i].value = RANGE_CONFIG[i].value = val;
+
         let leftShadow = 100 * val / ( RANGE_CONFIG[i].max );
 
         _B[i].style.background =`linear-gradient(to right, #1091cc ${leftShadow}%, #CACACA ${leftShadow}%)`;
@@ -180,10 +181,10 @@ const mgCalc = (function(){
             return;
         }
 
-        if ( updatedHeight < elementOriginalHeight){
+        if ( updatedHeight < elementOriginalHeight ) {
             updatedHeight += displacementRate;
-            document.documentElement.scrollTop += displacementRate * 0.8;
-            displacementRate *= 0.9;
+            document.documentElement.scrollTop += displacementRate * 0.5;
+            displacementRate *=  0.9;
             _RT.style.height = updatedHeight + 'px';
             window.requestAnimationFrame(expandSection);
         } else {
@@ -197,12 +198,3 @@ const mgCalc = (function(){
     }
 
 })();
-
-// Live save
-// Safe connect
-// Security Scan Plus
-// Web Advisor
-
-// sass --watch src/scss:src/css
-// npx babel src --out-dir lib
- 

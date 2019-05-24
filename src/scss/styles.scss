@@ -203,7 +203,7 @@ section.annual {
     }
 }
 
-button.btn {
+.btn {
     display: block;
     color: white;
     background-color: $btnBgColor;
@@ -219,7 +219,101 @@ button.btn {
     @media (min-width: $breakpointsm) {
         font-size: 16px;
     }
+    &:focus {
+        outline: medium none;
+    }
+    &:hover {
+        background-color: $btnBgColorHover;
+    }
 }
+
+.errormessage {
+    color: $errorColor;
+    font-family: 'HelveticaNeue-Bold';
+    font-size: 10px;
+    display: none;
+    margin-top: 3px;
+    @media (min-width: $breakpointsm) {
+        font-size: 12px;
+    }
+}
+ 
+// Results table
+
+.results-table {
+    background-color: $resultsBackground;
+    margin-top: -10px;
+    padding: 20px;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    &.pristine {
+        height: 0;
+        opacity: 0;
+    }
+    @media (min-width: $breakpointsm) {
+        margin-top: 0;
+        flex-grow: 1;
+        padding: 30px 40px 22px;
+        transition: none 0s;
+        &.pristine {
+            height: auto;
+            opacity: 1;
+            dd {
+                opacity: 0.2;
+            }
+        }
+    }
+    dl {
+        justify-content: space-between;
+        border-bottom: $resultsSeparator;
+        line-height: 16px;
+        padding: 15px 0;
+        margin: 0;
+        display: flex;
+        @media (min-width: $breakpointsm) {
+            display: block;
+            border-bottom: medium none;
+            line-height: 1.7em;
+        }
+        &.total {
+            padding: 20px 0 5px;
+            border-bottom: medium none;
+            @media (min-width: $breakpointsm) {
+                border-top: $resultsSeparator;
+                padding-top: 25px;
+                margin-top: 10px;
+                dt {
+                    font-size: 18px;
+                }
+            }
+            dd {
+                font-size: 18px;
+                @media (min-width: $breakpointsm) {
+                    font-size: 22px;
+                    line-height: 1.8em;
+                }
+            }
+        }
+    }
+    dt {
+        font-family: 'SFUIDisplay-Regular';
+        font-size: 12px;
+        @media (min-width: $breakpointsm) {
+            font-size: 14px;
+        }
+    }
+    dd {
+        font-family: 'SFUIDisplay-Bold';
+        margin: 0;
+        font-size: 14px;
+        @media (min-width: $breakpointsm) {
+            font-size: 18px;
+        }
+    }
+}
+
+// Range Inputs
   
 input[type=range] {
     position: relative;
@@ -314,160 +408,16 @@ input[type=range] {
     }
 }
 
-.errormessage {
-    color: $errorColor;
-    font-family: 'HelveticaNeue-Bold';
-    font-size: 10px;
-    display: none;
-    margin-top: 3px;
-    @media (min-width: $breakpointsm) {
-        font-size: 12px;
+.dummy {
+    padding: 0 15px 20px;
+    max-width: 750px;
+    margin: auto;
+    img {
+        display: block;
+        width: 100%;
     }
-}
- 
-// Results table
-
-.results-table {
-    background-color: $resultsBackground;
-    margin-top: -10px;
-    padding: 20px;
-    overflow: hidden;
-    opacity: 1;
-    transition: opacity 0.5s ease-out;
-    &.pristine {
-        height: 0;
-        opacity: 0;
-    }
-    @media (min-width: $breakpointsm) {
-        margin-top: 0;
-        flex-grow: 1;
-        padding: 30px 40px 22px;
-        transition: none 0s;
-        &.pristine {
-            height: auto;
-            opacity: 1;
-            dd {
-                opacity: 0.2;
-            }
-        }
-    }
-    dl {
-        justify-content: space-between;
-        border-bottom: $resultsSeparator;
-        line-height: 16px;
-        padding: 15px 0;
-        margin: 0;
-        display: flex;
-        @media (min-width: $breakpointsm) {
-            display: block;
-            border-bottom: medium none;
-            line-height: 1.7em;
-        }
-        &.total {
-            padding: 20px 0 5px;
-            border-bottom: medium none;
-            @media (min-width: $breakpointsm) {
-                border-top: $resultsSeparator;
-                padding-top: 25px;
-                margin-top: 10px;
-                dt {
-                    font-size: 18px;
-                }
-            }
-            dd {
-                font-size: 18px;
-                @media (min-width: $breakpointsm) {
-                    font-size: 22px;
-                    line-height: 1.8em;
-                }
-            }
-        }
-    }
-    dt {
-        font-family: 'SFUIDisplay-Regular';
-        font-size: 12px;
-        @media (min-width: $breakpointsm) {
-            font-size: 14px;
-        }
-    }
-    dd {
-        font-family: 'SFUIDisplay-Bold';
-        margin: 0;
+    p {
+        line-height: 1.6;
         font-size: 14px;
-        @media (min-width: $breakpointsm) {
-            font-size: 18px;
-        }
     }
 }
-
-
-// $track-w: 12.5em;
-// $track-h: .25em;
-// $thumb-d: 1.5em;
-// $track-c: #ccc;
-// $filll-c: #95a;
-
-// @mixin track($fill: 0) {
-//     box-sizing: border-box;
-//     border: none;
-//     width: $track-w; height: $track-h;
-//     background: $track-c;
-    
-//     @if $fill == 1 {
-//         .js & {
-//             background: linear-gradient($filll-c, $filll-c)
-//                 0/ var(--sx) 100% no-repeat $track-c
-//         }
-//     }
-// }
-
-// @mixin fill() {
-//     height: $track-h;
-//     background: $filll-c
-// }
-
-// @mixin thumb() {
-//     box-sizing: border-box;
-//     border: none;
-//     width: $thumb-d; height: $thumb-d;
-//     border-radius: 50%;
-//     background: #f90;
-// }
-
-// [type='range'] {
-//     overflow: hidden;
-//     &, &::-webkit-slider-thumb {
-//         -webkit-appearance: none;
-//     }
-    
-//     --range: calc(var(--max) - var(--min));
-//     --ratio: calc((var(--val) - var(--min))/var(--range));
-//     --sx: calc(.5*#{$thumb-d} + var(--ratio)*(100% - #{$thumb-d}));
-//     margin: 0;
-//     padding: 0;
-//     width: $track-w; height: $thumb-d;
-//     background: transparent;
-//     font: 1em/1 arial, sans-serif;
-    
-//     &::-webkit-slider-runnable-track {
-//         @include track(1)
-//     }
-//     &::-moz-range-track { @include track }
-//     &::-ms-track { @include track }
-    
-//     &::-moz-range-progress { @include fill }
-//     &::-ms-fill-lower { @include fill }
-    
-//     &::-webkit-slider-thumb {
-//         margin-top: .5*($track-h - $thumb-d);
-//         box-shadow: -80px 0 0 80px #43e5f7;
-//         @include thumb
-//     }
-//     &::-moz-range-thumb { @include thumb }
-//     &::-ms-thumb {
-//         margin-top: 0;
-//         @include thumb
-//     }
-    
-//     &::-ms-tooltip { display: none }
-// }
