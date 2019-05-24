@@ -7,12 +7,19 @@ This project uses the following simply structure in order to find easily each fi
 
 |__ /docs
 |__ /src
+
     |__ /css
+    
     |__ /es6
+    
     |__ /fonts
+    
     |__ /img
+    
     |__ /js
+    
     |__ /scss
+    
     |__ index.html
 
 ## Instructions to install
