@@ -1,0 +1,16 @@
+{
+    "source": {
+        "include": ["src/es6"],
+        "includePattern": ".js$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/",
+        "recourse": true,
+        "verbose": true
+    }
+}

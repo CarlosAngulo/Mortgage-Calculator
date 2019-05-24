@@ -7,11 +7,13 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5"
+    "@babel/preset-env": "^7.4.5",
+    "jsdoc": "^3.6.2"
   },
   "scripts": {
     "build": "npx babel src/es6 --out-dir src/js",
     "buildw": "npx babel src/es6 --out-dir src/js",
+    "docs": "npx jsdoc -c jsdoc.json",
     "sassw": "sass --watch src/scss:src/css"
   },
   "browserslist": [
