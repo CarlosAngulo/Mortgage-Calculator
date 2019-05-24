@@ -14,6 +14,8 @@
     
     <div class="container">
 
+        <!-- Calculator -->
+
         <div class="calculator">
             <h3>Change values to calculate your results</h3>
             
@@ -76,26 +78,32 @@
 
         </div>
 
-        <div class="results">
+        <!-- Calculator Ends -->
+
+        <!-- Results Table-->
+
+        <div class="results-table pristine">
             <h2>Your results</h2>
             <dl>
                 <dt>Principle & Interest</dt>
-                <dd>$ 733.27</dd>
+                <dd>$ <span id="interest">- -</span></dd>
             </dl>
             <dl>
                 <dt>Tax</dt>
-                <dd>$ 733.27</dd>
+                <dd>$ <span id="tax">- -</span></dd>
             </dl>
             <dl>
                 <dt>Insurance</dt>
-                <dd>$ 733.27</dd>
+                <dd>$ <span id="insurance">- -</span></dd>
             </dl>
             <dl class="total">
                 <dt>Total Monthly Payment</dt>
-                <dd>$ 841.60</dd>
+                <dd>$ <span id="total">- -</span></dd>
             </dl>
         </div>
-        
+
+        <!-- Results Table Ends -->
+
     </div>
 
     <script src="es6/mortgage-calculator.js"></script>

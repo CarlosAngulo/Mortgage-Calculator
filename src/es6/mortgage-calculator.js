@@ -1,5 +1,9 @@
 const mgCalc = (function(){
 
+    const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    window.requestAnimationFrame = requestAnimationFrame;
+
     /**
      * Initial values set up
      */
@@ -36,8 +40,16 @@ const mgCalc = (function(){
         },
     ];
 
+    const RESULT_VALUES = {
+        interest: 0,
+        tax: 0,
+        insurance: 0,
+        total: 0
+    }
+
     const MANDATORY_MESSAGE = [ 'Mandatory field', ' is mandatory' ];
     const ERROR_KEY = 'error';
+    const PRISTINE_KEY = 'pristine';
 
     
     /**
@@ -61,12 +73,16 @@ const mgCalc = (function(){
     const _B = document.querySelectorAll('.controls__range__background');
     const _IPT = document.querySelectorAll('input.insert');
     const _IEM = document.querySelectorAll('.errormessage');
+    const _RT = document.querySelector('.results-table');
+
+    const elementOriginalHeight = _RT.scrollHeight;
+    let updatedHeight = 0;
 
     /**
      * Iterates over rangeConfig array to add EventListeners to the Range Input Controls
      */
 
-    RANGE_CONFIG.forEach( (item, i) => {
+    RANGE_CONFIG.map( (item, i) => {
         updateRangeValues(item.value, i);
         _R[i].addEventListener('input', e => {
             updateRangeValues(e.target.value, i);
@@ -122,10 +138,58 @@ const mgCalc = (function(){
     }
     
     function calculate() {
+        
         if ( ! validate() ) {
             return;
         }
-        console.log('validate()');
+        
+        _RT.classList.remove(PRISTINE_KEY);
+
+        expandSection();
+
+        // Calculating the Principle & Interest
+
+        const yearsOfMortgage = RANGE_CONFIG[0].value;
+        const interestRate = RANGE_CONFIG[1].value;
+        const loanAmount = _IPT[0].value;
+
+        RESULT_VALUES.interest = ((interestRate / 100 ) / 12) * loanAmount / ( 1 - Math.pow(( 1 + ((interestRate / 100) / 12)), - yearsOfMortgage * 12));
+
+        // Calculating The tax
+
+        RESULT_VALUES.tax = INPUT_VALUES[1].value / 12;
+
+        // Calculating The insurance
+
+        RESULT_VALUES.insurance = INPUT_VALUES[2].value / 12;
+
+        // Calculating the Monthly payment
+
+        RESULT_VALUES.total = RESULT_VALUES.interest + RESULT_VALUES.tax + RESULT_VALUES.insurance;
+
+        for ( let id in RESULT_VALUES ) {
+            document.getElementById(id).innerHTML = RESULT_VALUES[id].toFixed(2);
+        }
+    }
+
+    let displacementRate = 30;
+
+    function expandSection() {
+
+        if ( !evalMobile(matchMobile) ||  _RT.classList.contains(PRISTINE_KEY) ) { 
+            return;
+        }
+
+        if ( updatedHeight < elementOriginalHeight){
+            updatedHeight += displacementRate;
+            document.documentElement.scrollTop += displacementRate * 0.8;
+            displacementRate *= 0.9;
+            _RT.style.height = updatedHeight + 'px';
+            window.requestAnimationFrame(expandSection);
+        } else {
+            _RT.style.height = null;
+        }
+
     }
 
     return {

@@ -64,7 +64,7 @@ label {
 }
 
 input[type=text], input[type=number] {
-    padding: 0 15px;
+    padding: 0 5px;
     font-size: 14px;
     @media (min-width: $breakpointsm) {
         font-size: 16px;
@@ -161,7 +161,7 @@ input[type=text], input[type=number] {
 }
 
 section.loan, section.annual {
-    margin: 16px 0 10px;
+    margin: 16px 0 17px;
     @media (min-width: $breakpointsm) {
         margin: 16px 0 22px;
     }
@@ -319,22 +319,37 @@ input[type=range] {
     font-family: 'HelveticaNeue-Bold';
     font-size: 10px;
     display: none;
+    margin-top: 3px;
     @media (min-width: $breakpointsm) {
         font-size: 12px;
     }
 }
-
  
 // Results table
 
-.results {
+.results-table {
     background-color: $resultsBackground;
     margin-top: -10px;
     padding: 20px;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    &.pristine {
+        height: 0;
+        opacity: 0;
+    }
     @media (min-width: $breakpointsm) {
         margin-top: 0;
         flex-grow: 1;
         padding: 30px 40px 22px;
+        transition: none 0s;
+        &.pristine {
+            height: auto;
+            opacity: 1;
+            dd {
+                opacity: 0.2;
+            }
+        }
     }
     dl {
         justify-content: space-between;

@@ -157,7 +157,7 @@ label {
 }
 
 input[type=text], input[type=number] {
-  padding: 0 15px;
+  padding: 0 5px;
   font-size: 14px;
 }
 @media (min-width: 768px) {
@@ -268,7 +268,7 @@ input[type=text].error + .errormessage, input[type=number].error + .errormessage
 }
 
 section.loan, section.annual {
-  margin: 16px 0 10px;
+  margin: 16px 0 17px;
 }
 @media (min-width: 768px) {
   section.loan, section.annual {
@@ -434,6 +434,7 @@ input[type=range]:focus::-ms-fill-upper {
   font-family: "HelveticaNeue-Bold";
   font-size: 10px;
   display: none;
+  margin-top: 3px;
 }
 @media (min-width: 768px) {
   .errormessage {
@@ -441,19 +442,34 @@ input[type=range]:focus::-ms-fill-upper {
   }
 }
 
-.results {
+.results-table {
   background-color: #eaf6fa;
   margin-top: -10px;
   padding: 20px;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+.results-table.pristine {
+  height: 0;
+  opacity: 0;
 }
 @media (min-width: 768px) {
-  .results {
+  .results-table {
     margin-top: 0;
     flex-grow: 1;
     padding: 30px 40px 22px;
+    transition: none 0s;
+  }
+  .results-table.pristine {
+    height: auto;
+    opacity: 1;
+  }
+  .results-table.pristine dd {
+    opacity: 0.2;
   }
 }
-.results dl {
+.results-table dl {
   justify-content: space-between;
   border-bottom: 1px solid #B2B2B2;
   line-height: 16px;
@@ -462,51 +478,51 @@ input[type=range]:focus::-ms-fill-upper {
   display: flex;
 }
 @media (min-width: 768px) {
-  .results dl {
+  .results-table dl {
     display: block;
     border-bottom: medium none;
     line-height: 1.7em;
   }
 }
-.results dl.total {
+.results-table dl.total {
   padding: 20px 0 5px;
   border-bottom: medium none;
 }
 @media (min-width: 768px) {
-  .results dl.total {
+  .results-table dl.total {
     border-top: 1px solid #B2B2B2;
     padding-top: 25px;
     margin-top: 10px;
   }
-  .results dl.total dt {
+  .results-table dl.total dt {
     font-size: 18px;
   }
 }
-.results dl.total dd {
+.results-table dl.total dd {
   font-size: 18px;
 }
 @media (min-width: 768px) {
-  .results dl.total dd {
+  .results-table dl.total dd {
     font-size: 22px;
     line-height: 1.8em;
   }
 }
-.results dt {
+.results-table dt {
   font-family: "SFUIDisplay-Regular";
   font-size: 12px;
 }
 @media (min-width: 768px) {
-  .results dt {
+  .results-table dt {
     font-size: 14px;
   }
 }
-.results dd {
+.results-table dd {
   font-family: "SFUIDisplay-Bold";
   margin: 0;
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  .results dd {
+  .results-table dd {
     font-size: 18px;
   }
 }
