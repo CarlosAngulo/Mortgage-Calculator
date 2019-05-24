@@ -14,10 +14,16 @@ This project uses the following simply structure in order to find easily each fi
         |__ /js
         |__ /scss
         |__ index.html
+    .babelrc
+    .gitingnore
+    jsdoc.json
+    package.json
+    README.md
 
 ## Instructions to install
 - Download or clone this [repository](https://github.com/CarlosAngulo/Mortgage-Calculator.git) in your local machine.
 - Open the index.html file located in the src/ folder using Google Chrome.
 
 ### Modify the code
-- 
+All the editable files are in the src/ folder
+The main file is the index.html which contains...
