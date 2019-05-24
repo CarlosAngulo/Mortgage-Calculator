@@ -1,7 +1,7 @@
 /**
- * General object
- * @example
- * 
+ * General object. Self-executing funciton.
+ * Encapsulates all propperties and methods to avoid expose them.
+ * Returns the calculate funciton in order to be used ouside.
  */
 const mgCalc = (function(){
 
@@ -76,6 +76,7 @@ const mgCalc = (function(){
     const _IPT = document.querySelectorAll('input.insert');
     const _IEM = document.querySelectorAll('.errormessage');
     const _RT = document.querySelector('.results-table');
+    const _CB = document.getElementById('calculateBtn');
 
     const elementOriginalHeight = _RT.scrollHeight;
     let updatedHeight = 0;
@@ -136,6 +137,8 @@ const mgCalc = (function(){
         });
         return validated;
     }
+
+    _CB.addEventListener('click', ()=> calculate());
     
     function calculate() {
         
@@ -178,7 +181,7 @@ const mgCalc = (function(){
 
         if ( updatedHeight < elementOriginalHeight ) {
             updatedHeight += displacementRate;
-            document.documentElement.scrollTop += displacementRate / 2;
+            document.documentElement.scrollTop += displacementRate;
             displacementRate *=  0.9;
             _RT.style.height = updatedHeight + 'px';
             window.requestAnimationFrame(expandSection);

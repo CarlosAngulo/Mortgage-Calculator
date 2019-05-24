@@ -1,3 +1,23 @@
+/**
+* Main SCSS File
+* Configures the main styles for the application
+* This file uses BEM notation
+*/
+/**
+* Mixins file
+* Contains functions and mixins to build repetitive CSS
+*/
+/**
+* Font Face mixing. 
+* Iterates over the extensions and creates the font face notation.
+*/
+/**
+* SCSS Variables used in the project
+*/
+/**
+* Global CSS File
+* Formats the styles in all browsers
+*/
 html, body {
   padding: 0;
   margin: 0;
@@ -56,12 +76,6 @@ input[type=text], input[type=number] {
   display: block;
   padding: 0 10px;
   width: 100%;
-  line-height: 40px;
-}
-@media (min-width: 768px) {
-  input[type=text], input[type=number] {
-    line-height: 44px;
-  }
 }
 input[type=text]:focus, input[type=number]:focus {
   border: 1px solid #3e3d3f;
@@ -159,9 +173,11 @@ label {
 input[type=text], input[type=number] {
   padding: 0 5px;
   font-size: 14px;
+  line-height: 40px;
 }
 @media (min-width: 768px) {
   input[type=text], input[type=number] {
+    line-height: 44px;
     font-size: 16px;
   }
 }
@@ -172,6 +188,38 @@ input[type=text].error + .errormessage, input[type=number].error + .errormessage
   display: block;
 }
 
+/** General class selector
+* .btn: define styles for the buttons
+*/
+.btn {
+  display: block;
+  color: white;
+  background-color: #0077c0;
+  text-align: center;
+  line-height: 40px;
+  border: medium none;
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-family: "HelveticaNeue-Bold";
+  cursor: pointer;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .btn {
+    font-size: 16px;
+  }
+}
+.btn:focus {
+  outline: medium none;
+}
+.btn:hover {
+  background-color: #0064a1;
+}
+
+/** Main selector
+* Container: general container
+*/
 .container {
   padding: 0 10px;
 }
@@ -185,6 +233,9 @@ input[type=text].error + .errormessage, input[type=number].error + .errormessage
   }
 }
 
+/** Main selector
+* Calculator: general container for the calculator
+*/
 .calculator {
   margin: 0;
   border-radius: 4px;
@@ -210,6 +261,9 @@ input[type=text].error + .errormessage, input[type=number].error + .errormessage
   }
 }
 
+/** Main selector
+* controls: define the range input and its nested elements
+*/
 .controls {
   display: flex;
   font-size: 14px;
@@ -316,32 +370,6 @@ section.annual .annual__tax:last-child {
   }
 }
 
-.btn {
-  display: block;
-  color: white;
-  background-color: #0077c0;
-  text-align: center;
-  line-height: 40px;
-  border: medium none;
-  width: 100%;
-  text-transform: uppercase;
-  border-radius: 4px;
-  font-family: "HelveticaNeue-Bold";
-  cursor: pointer;
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  .btn {
-    font-size: 16px;
-  }
-}
-.btn:focus {
-  outline: medium none;
-}
-.btn:hover {
-  background-color: #0064a1;
-}
-
 .errormessage {
   color: #da3535;
   font-family: "HelveticaNeue-Bold";
@@ -355,6 +383,10 @@ section.annual .annual__tax:last-child {
   }
 }
 
+/**
+* Main Selector
+* results-table: Container for the results and its nested elements
+*/
 .results-table {
   background-color: #eaf6fa;
   margin-top: -10px;
@@ -440,6 +472,10 @@ section.annual .annual__tax:last-child {
   }
 }
 
+/**
+* Customized element
+* Inputy type range
+*/
 input[type=range] {
   position: relative;
   height: 26px;
@@ -531,20 +567,6 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: transparent;
-}
-
-.dummy {
-  padding: 0 15px 20px;
-  max-width: 750px;
-  margin: auto;
-}
-.dummy img {
-  display: block;
-  width: 100%;
-}
-.dummy p {
-  line-height: 1.6;
-  font-size: 14px;
 }
 
 /*# sourceMappingURL=styles.css.map */

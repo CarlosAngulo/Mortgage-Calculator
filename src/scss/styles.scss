@@ -1,12 +1,25 @@
+/**
+* Main SCSS File
+* Configures the main styles for the application
+* This file uses BEM notation
+*/
+
+// Local dependencies
+
 @import 'mixins.scss';
 @import 'variables.scss';
 @import 'global.scss';
+
+
+// Include the fonts
 
 @include font-face('HelveticaNeue', '../fonts/HelveticaNeue');
 @include font-face('HelveticaNeue-Light', '../fonts/HelveticaNeue-Light');
 @include font-face('HelveticaNeue-Bold', '../fonts/HelveticaNeue-Bold');
 @include font-face('SFUIDisplay-Regular', '../fonts/SFUIDisplay-Regular');
 @include font-face('SFUIDisplay-Bold', '../fonts/SFUIDisplay-Bold');
+
+// General styles
 
 html {
     font-family: 'HelveticaNeue';
@@ -66,7 +79,9 @@ label {
 input[type=text], input[type=number] {
     padding: 0 5px;
     font-size: 14px;
+    line-height: $inputLineHeightMobile;
     @media (min-width: $breakpointsm) {
+        line-height: $inputLineHeightDesktop;
         font-size: 16px;
     }
     &.error {
@@ -77,6 +92,36 @@ input[type=text], input[type=number] {
     }
 }
 
+/** General class selector
+* .btn: define styles for the buttons
+*/
+.btn {
+    display: block;
+    color: white;
+    background-color: $btnBgColor;
+    text-align: center;
+    line-height: 40px;
+    border: medium none;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-family: 'HelveticaNeue-Bold';
+    cursor: pointer;
+    font-size: 14px;
+    @media (min-width: $breakpointsm) {
+        font-size: 16px;
+    }
+    &:focus {
+        outline: medium none;
+    }
+    &:hover {
+        background-color: $btnBgColorHover;
+    }
+}
+
+/** Main selector
+* Container: general container
+*/
 .container {
     padding: 0 10px;
     @media (min-width: $breakpointsm) {
@@ -88,6 +133,9 @@ input[type=text], input[type=number] {
     }
 }
 
+/** Main selector
+* Calculator: general container for the calculator
+*/
 .calculator {
     margin: 0;
     border-radius: 4px;
@@ -109,6 +157,9 @@ input[type=text], input[type=number] {
     }
 }
 
+/** Main selector
+* controls: define the range input and its nested elements
+*/
 .controls {
     display: flex;
     font-size: 14px;
@@ -203,30 +254,6 @@ section.annual {
     }
 }
 
-.btn {
-    display: block;
-    color: white;
-    background-color: $btnBgColor;
-    text-align: center;
-    line-height: 40px;
-    border: medium none;
-    width: 100%;
-    text-transform: uppercase;
-    border-radius: 4px;
-    font-family: 'HelveticaNeue-Bold';
-    cursor: pointer;
-    font-size: 14px;
-    @media (min-width: $breakpointsm) {
-        font-size: 16px;
-    }
-    &:focus {
-        outline: medium none;
-    }
-    &:hover {
-        background-color: $btnBgColorHover;
-    }
-}
-
 .errormessage {
     color: $errorColor;
     font-family: 'HelveticaNeue-Bold';
@@ -238,8 +265,10 @@ section.annual {
     }
 }
  
-// Results table
-
+/**
+* Main Selector
+* results-table: Container for the results and its nested elements
+*/
 .results-table {
     background-color: $resultsBackground;
     margin-top: -10px;
@@ -313,8 +342,10 @@ section.annual {
     }
 }
 
-// Range Inputs
-  
+/**
+* Customized element
+* Inputy type range
+*/
 input[type=range] {
     position: relative;
     height: 26px;
@@ -405,19 +436,5 @@ input[type=range] {
     }
     &:focus::-ms-fill-upper {
         background: transparent;
-    }
-}
-
-.dummy {
-    padding: 0 15px 20px;
-    max-width: 750px;
-    margin: auto;
-    img {
-        display: block;
-        width: 100%;
-    }
-    p {
-        line-height: 1.6;
-        font-size: 14px;
     }
 }

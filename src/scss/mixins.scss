@@ -1,6 +1,10 @@
-// =============================================================================
-// String Replace
-// =============================================================================
+/**
+* Mixins file
+* Contains functions and mixins to build repetitive CSS
+*/
+
+
+// String replace funciton
 
 @function str-replace($string, $search, $replace: "") {
 	$index: str-index($string, $search);
@@ -12,9 +16,10 @@
 	@return $string;
 }
 
-// =============================================================================
-// Font Face
-// =============================================================================
+/**
+* Font Face mixing. 
+* Iterates over the extensions and creates the font face notation.
+*/
 
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff woff2 ttf svg) {
 	$src: null;

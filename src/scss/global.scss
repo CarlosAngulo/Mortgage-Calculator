@@ -1,3 +1,8 @@
+/**
+* Global CSS File
+* Formats the styles in all browsers
+*/
+
 html, body {
     padding: 0;
     margin: 0;
@@ -56,10 +61,6 @@ input[type=text], input[type=number] {
     display: block;
     padding: 0 10px;
     width: 100%;
-    line-height: $inputLineHeightMobile;
-    @media (min-width: $breakpointsm) {
-        line-height: $inputLineHeightDesktop;
-    }
     &:focus {
         border: 1px solid #3e3d3f;
         outline: medium none;
